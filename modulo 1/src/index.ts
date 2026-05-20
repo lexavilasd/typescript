@@ -1,18 +1,13 @@
-// src/index.ts
+import { calcularMedia, calcularMediana, filtrarAtipicos } from './math-utils.js';
 
-import {
-  calcularMedia,
-  calcularMediana,
-  filtrarAtipicos
-} from "./math-utils";
+const datos: number[] = [10, 12, 11, 100, 9, 13, 11, 10, 95, 12];
 
-const datos: number[] = [10, 12, 14, 15, 100];
+console.log('Datos:', datos);
+console.log('Media:', calcularMedia(datos));
+console.log('Mediana:', calcularMediana(datos));
+console.log('Sin atípicos (límite 20):', filtrarAtipicos(datos, 20));
 
-const media = calcularMedia(datos);
-const mediana = calcularMediana(datos);
-const filtrados = filtrarAtipicos(datos, 20);
-
-console.log("Datos:", datos);
-console.log("Media:", media);
-console.log("Mediana:", mediana);
-console.log("Sin atípicos:", filtrados);
+// Caso límite: array vacío
+console.log('Media array vacío:', calcularMedia([]));
+console.log('Mediana array vacío:', calcularMediana([]));
+console.log('Filtrar array vacío:', filtrarAtipicos([], 10));

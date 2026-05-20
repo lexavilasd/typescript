@@ -1,35 +1,23 @@
-
-export function calcularMedia(array: number[]): number | null {
-  if (array.length === 0) return null;
-
-  const suma = array.reduce((acc, num) => acc + num, 0);
-  return suma / array.length;
+export function calcularMedia(datos: number[]): number | null {
+  if (datos.length === 0) return null;
+  const suma = datos.reduce((acc, val) => acc + val, 0);
+  return suma / datos.length;
 }
 
-// Mediana
-export function calcularMediana(array: number[]): number | null {
-  if (array.length === 0) return null;
 
-  const ordenado = [...array].sort((a, b) => a - b);
-  const mitad = Math.floor(ordenado.length / 2);
-
-  if (ordenado.length % 2 === 0) {
-    return (ordenado[mitad - 1] + ordenado[mitad]) / 2;
-  } else {
-    return ordenado[mitad];
+export function calcularMediana(datos: number[]): number | null {
+  if (datos.length === 0) return null;
+  const ordenados = [...datos].sort((a, b) => a - b);
+  const mitad = Math.floor(ordenados.length / 2);
+  if (ordenados.length % 2 === 0) {
+    return (ordenados[mitad - 1] + ordenados[mitad]) / 2;
   }
+  return ordenados[mitad];
 }
 
-// Filtrar valores atípicos (outliers)
-// "limite" = distancia máxima respecto a la media
-export function filtrarAtipicos(
-  array: number[],
-  limite: number
-): number[] {
-  if (array.length === 0) return [];
 
-  const media = calcularMedia(array);
-  if (media === null) return [];
-
-  return array.filter(num => Math.abs(num - media) <= limite);
+export function filtrarAtipicos(datos: number[], limite: number): number[] {
+  if (datos.length === 0) return [];
+  const media = calcularMedia(datos) as number;
+  return datos.filter((val) => Math.abs(val - media) <= limite);
 }
